@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Ký và Đăng Nhập Nâng Cao</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            background-color: #ddd;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tabs button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        form {
+            display: none;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 13px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .form-footer p {
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Chào Mừng Bạn</h2>
+        <div class="tabs">
+            <button class="active" onclick="toggleForm('login')">Đăng Nhập</button>
+            <button onclick="toggleForm('register')">Đăng Ký</button>
+        </div>
+
+        <!-- Form Đăng Nhập -->
+        <form id="loginForm" class="active" onsubmit="return login(event)">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="loginEmail" placeholder="Nhập email của bạn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Mật Khẩu</label>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Nhập mật khẩu của bạn" required>
+            </div>
+
+            <button type="submit">Đăng Nhập</button>
+        </form>
+
+        <!-- Form Đăng Ký -->
+        <form id="registerForm" onsubmit="return register(event)">
+            <div class="form-group">
+                <label for="fullName">Họ Tên</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Nhập họ tên đầy đủ của bạn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="registerEmail" placeholder="Nhập email của bạn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registerPassword">Mật Khẩu</label>
+                <input type="password" id="registerPassword" name="registerPassword" placeholder="Tạo mật khẩu" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('registerPassword')">👁️</span>
+            </div>
+
+            <div class="form-group">
+                <label for="registerAge">Tuổi</label>
+                <input type="number" id="registerAge" name="registerAge" placeholder="Nhập độ tuổi của bạn" min="18" required>
+            </div>
+
+            <button type="submit">Đăng Ký</button>
+        </form>
+
+        <div class="form-footer">
+            <p>Bằng việc tiếp tục, bạn đồng ý với <a href="#">Điều Khoản và Điều Kiện</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Chuyển đổi giữa các form Đăng Ký và Đăng Nhập
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginBtn = document.querySelector('.tabs button:nth-child(1)');
+            const registerBtn = document.querySelector('.tabs button:nth-child(2)');
+
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginBtn.classList.add('active');
+                registerBtn.classList.remove('active');
+            } else {
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                loginBtn.classList.remove('active');
+                registerBtn.classList.add('active');
+            }
+        }
+
+        // Ẩn/Hiện mật khẩu
+        function togglePasswordVisibility(passwordFieldId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
+        // Xử lý đăng ký
+        function register(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const age = document.getElementById('registerAge').value;
+
+            if (age < 18) {
+                alert("Bạn phải ít nhất 18 tuổi để đăng ký.");
+                return false;
+            }
+
+            // Kiểm tra email hợp lệ
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Vui lòng nhập email hợp lệ.");
+                return false;
+            }
+
+            alert("Đăng ký thành công!");
+            return true;
+        }
+
+        // Xử lý đăng nhập
+        function login(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert("Vui lòng điền đầy đủ thông tin.");
+                return false;
+            }
+
+            alert("Đăng nhập thành công!");
+            return true;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lịch sử mua hàng</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Lịch sử mua hàng</h1>
+    </header>
+
+    <section class="order-history">
+      <table>
+        <thead>
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Ngày mua</th>
+            <th>Trạng thái</th>
+            <th>Tổng tiền</th>
+            <th>Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12345</td>
+            <td>20/02/2025</td>
+            <td>Đang giao</td>
+            <td>500,000 VND</td>
+            <td><button class="details-btn" onclick="viewDetails(12345)">Xem chi tiết</button></td>
+          </tr>
+          <tr>
+            <td>12346</td>
+            <td>18/02/2025</td>
+            <td>Đã giao</td>
+            <td>1,200,000 VND</td>
+            <td><button class="details-btn" onclick="viewDetails(12346)">Xem chi tiết</button></td>
+          </tr>
+          <tr>
+            <td>12347</td>
+            <td>15/02/2025</td>
+            <td>Đang giao</td>
+            <td>750,000 VND</td>
+            <td><button class="details-btn" onclick="viewDetails(12347)">Xem chi tiết</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

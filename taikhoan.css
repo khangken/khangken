@@ -1,0 +1,164 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('https://via.placeholder.com/1600x900/cccccc/ffffff?text=Background+Image');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 300;
+  }
+  
+  /* Tạo hộp chứa form */
+  .form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 380px;
+    transition: all 0.4s ease;
+  }
+  
+  /* Tiêu đề */
+  .form-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form-header h1 {
+    font-size: 32px;
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .form-header p {
+    font-size: 16px;
+    color: #f7f7f7;
+  }
+  
+  /* Tabs chuyển đổi */
+  .form-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  
+  .tab-button {
+    padding: 15px 0;
+    width: 48%;
+    text-align: center;
+    border: 1px solid #ffd700;
+    background-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    color: #ffd700;
+  }
+  
+  .tab-button.active {
+    background-color: #ffd700;
+    color: #222;
+  }
+  
+  .tab-button:hover {
+    background-color: rgba(255, 215, 0, 0.2);
+  }
+  
+  /* Form content */
+  .form-content {
+    display: none;
+  }
+  
+  .form-content.active {
+    display: block;
+  }
+  
+  /* Các nhóm input */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #f7f7f7;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #f1f1f1;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #ffd700;
+    outline: none;
+  }
+  
+  input::placeholder {
+    color: #ddd;
+  }
+  
+  /* Nút đăng nhập và đăng ký */
+  button.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  button.btn-submit:hover {
+    background-color: #218838;
+  }
+  
+  /* Animation cho form */
+  .form-container {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Tối ưu cho các thiết bị nhỏ */
+  @media (max-width: 480px) {
+    .form-container {
+      width: 90%;
+      padding: 30px;
+    }
+  
+    .tab-button {
+      font-size: 16px;
+    }
+  }
+  

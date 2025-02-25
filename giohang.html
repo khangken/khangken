@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng</title>
+  <link rel="stylesheet" href="giohang.css">
+</head>
+<body>
+  <div class="cart-container">
+    <h1 class="cart-title">Giỏ Hàng</h1>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Tổng</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sản phẩm 1 -->
+        <tr>
+          <td>
+            <div class="cart-item">
+              <img src="https://via.placeholder.com/100x100" alt="Product Image" class="cart-item-image">
+              <div class="cart-item-info">
+                <p class="cart-item-name">Điện thoại Samsung Galaxy S21</p>
+              </div>
+            </div>
+          </td>
+          <td class="cart-item-price">15,000,000đ</td>
+          <td>
+            <input type="number" class="cart-item-quantity" value="1" min="1">
+          </td>
+          <td class="cart-item-total">15,000,000đ</td>
+          <td>
+            <button class="remove-item-btn">Xóa</button>
+          </td>
+        </tr>
+
+        <!-- Sản phẩm 2 -->
+        <tr>
+          <td>
+            <div class="cart-item">
+              <img src="https://via.placeholder.com/100x100" alt="Product Image" class="cart-item-image">
+              <div class="cart-item-info">
+                <p class="cart-item-name">iPhone 13 Pro Max</p>
+              </div>
+            </div>
+          </td>
+          <td class="cart-item-price">30,000,000đ</td>
+          <td>
+            <input type="number" class="cart-item-quantity" value="1" min="1">
+          </td>
+          <td class="cart-item-total">30,000,000đ</td>
+          <td>
+            <button class="remove-item-btn">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <div class="cart-summary-item">
+        <span class="summary-label">Tổng cộng:</span>
+        <span class="summary-value" id="total-price">45,000,000đ</span>
+      </div>
+      <div class="cart-summary-item">
+        <button class="checkout-btn">Thanh toán</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
